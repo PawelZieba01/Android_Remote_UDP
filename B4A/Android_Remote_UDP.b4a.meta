@@ -7,5 +7,6 @@ ModuleBreakpoints2=
 ModuleClosedNodes0=
 ModuleClosedNodes1=
 ModuleClosedNodes2=
+NavigationStack=B4XMainPage,btn3_Click,101,0,B4XMainPage,Initialize,32,0,B4XMainPage,JoyStick_Y_value_changed,130,1,B4XMainPage,JoyStick_X_value_changed,119,6,B4XMainPage,Class_Globals,17,6,B4XMainPage,btn2_Click,92,0,B4XMainPage,B4XPage_Created,53,3,B4XMainPage,btn1_Click,67,1,Wizualny projektant,MainPage.bal,-100,6,B4XMainPage,Send_UDP_Data,65,1
 SelectedBuild=0
 VisibleModules=1,2
