@@ -22,7 +22,7 @@
 			android:launchMode="singleTop"
 			android:name=".main"
 			android:label="ESP_Remote_UDP"
-			android:screenOrientation="portrait">
+			android:screenOrientation="landscape">
 			<intent-filter>
 			   <action android:name="android.intent.action.MAIN" />
 			   <category android:name="android.intent.category.LAUNCHER" />

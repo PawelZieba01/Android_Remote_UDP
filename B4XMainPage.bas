@@ -19,8 +19,9 @@ Sub Class_Globals
 	Private btn3 As Button
 	Private Label_1 As Label
 	Private Label_2 As Label
-	Private Label_xy As Label
-	Private JoyStick As JoyStick
+	Private Label_3 As Label
+	Private JoyStick_X As JoyStick
+	Private JoyStick_Y As JoyStick
 	
 	Private btn1_state As Boolean = False
 	Private btn2_state As Boolean = False
@@ -43,13 +44,19 @@ End Sub
 Private Sub B4XPage_Created (Root1 As B4XView)
 	Root = Root1
 	Root.LoadLayout("MainPage")
-	'JoyStick.ButtonDrawable = "button"
-	'JoyStick.PadBackground = "pad"
-	JoyStick.ButtonColor = Colors.Cyan
-	JoyStick.PadColor = Colors.Gray
-	btn1.Color = Colors.Cyan
-	btn2.Color = Colors.Cyan
-	btn3.Color = Colors.Cyan
+	JoyStick_X.ButtonDrawable = "button"
+	JoyStick_X.PadBackground = "pad"
+	JoyStick_X.ButtonColor = Colors.Cyan
+	JoyStick_X.PadColor = Colors.Gray
+	
+	JoyStick_Y.ButtonDrawable = "button"
+	JoyStick_Y.PadBackground = "pad"
+	JoyStick_Y.ButtonColor = Colors.Cyan
+	JoyStick_Y.PadColor = Colors.Gray
+	
+	btn1.Color = 0xFF4F4F4F
+	btn2.Color = 0xFF4F4F4F
+	btn3.Color = 0xFF4F4F4F
 	
 	UDPSocket1.Initialize("UDP", 1901, 255)
 End Sub
@@ -69,10 +76,10 @@ Private Sub btn1_Click
 	Log(btn1_state)
 	
 	If btn1_state Then
-		btn1.Color = Colors.Magenta
+		btn1.Color = Colors.Cyan
 		btn1.Text = "ON"
 	Else
-		btn1.Color = Colors.Cyan
+		btn1.Color = 0xFF4F4F4F
 		btn1.Text = "OFF"
 	End If
 	
@@ -86,10 +93,10 @@ Private Sub btn2_Click
 	Log(btn2_state)
 	
 	If btn2_state Then
-		btn2.Color = Colors.Magenta
+		btn2.Color = Colors.Cyan
 		btn2.Text = "ON"
 	Else
-		btn2.Color = Colors.Cyan
+		btn2.Color = 0xFF4F4F4F
 		btn2.Text = "0FF"
 	End If
 	
@@ -102,10 +109,10 @@ Private Sub btn3_Click
 	Log(btn3_state)
 	
 	If btn3_state Then
-		btn3.Color = Colors.Magenta
+		btn3.Color = Colors.Cyan
 		btn3.Text = "ON"
 	Else
-		btn3.Color = Colors.Cyan
+		btn3.Color = 0xFF4F4F4F
 		btn3.Text = "OFF"
 	End If
 	
@@ -113,24 +120,23 @@ Private Sub btn3_Click
 	Send_UDP_Data
 End Sub
 
-
-
-Private Sub JoyStick_value_changed(angle As Double, angleDegrees As Double, powr As Double)
+Private Sub JoyStick_X_value_changed(angle As Double, angleDegrees As Double, powr As Double)
 	Dim Pos_X As Int = Round(CosD(angleDegrees)*-powr)
-	Dim Pos_Y As Int = Round(SinD(angleDegrees)*powr)
 	
-	Label_1.Text = "Angle: " & Round(angleDegrees)
-	Label_2.Text = "Power: " & Round(powr)
-	Label_xy.Text = "X: " & Pos_X & "   Y: " & Pos_Y
-	
-	If angleDegrees == 0 And powr == 0 Then
-		JoyStick.ButtonColor = Colors.Cyan
-	Else
-		JoyStick.ButtonColor = Colors.Magenta
-	End If
+	Label_1.Text = "Turn: " & Pos_X 
 	
 	MyData.Put("Pos_X", Pos_X)
+	
+	Send_UDP_Data
+End Sub
+
+Private Sub JoyStick_Y_value_changed(angle As Double, angleDegrees As Double, powr As Double)
+	Dim Pos_Y As Int = Round(SinD(angleDegrees)*powr)
+	
+	Label_3.Text = "POWER: " & Pos_Y 
+
 	MyData.Put("Pos_Y", Pos_Y)
 	
 	Send_UDP_Data
 End Sub
+
