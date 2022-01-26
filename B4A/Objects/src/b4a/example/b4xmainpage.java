@@ -39,8 +39,7 @@ public boolean _btn2_state = false;
 public boolean _btn3_state = false;
 public anywheresoftware.b4a.objects.collections.Map _mydata = null;
 public anywheresoftware.b4a.objects.SocketWrapper.UDPSocket _udpsocket1 = null;
-public anywheresoftware.b4a.objects.collections.JSONParser.JSONGenerator _jsongenerator = null;
-public anywheresoftware.b4a.objects.SocketWrapper.UDPSocket.UDPPacket _packet = null;
+public anywheresoftware.b4a.objects.SocketWrapper.UDPSocket.UDPPacket _packet1 = null;
 public byte[] _data = null;
 public b4a.example.main _main = null;
 public b4a.example.starter _starter = null;
@@ -80,78 +79,78 @@ _udpsocket1.Initialize(ba,"UDP",(int) (1901),(int) (255));
 return "";
 }
 public String  _btn1_click() throws Exception{
- //BA.debugLineNum = 68;BA.debugLine="Private Sub btn1_Click";
- //BA.debugLineNum = 69;BA.debugLine="btn1_state = Not(btn1_state)";
+ //BA.debugLineNum = 70;BA.debugLine="Private Sub btn1_Click";
+ //BA.debugLineNum = 71;BA.debugLine="btn1_state = Not(btn1_state)";
 _btn1_state = __c.Not(_btn1_state);
- //BA.debugLineNum = 70;BA.debugLine="Log(btn1_state)";
-__c.LogImpl("5851970",BA.ObjectToString(_btn1_state),0);
- //BA.debugLineNum = 72;BA.debugLine="If btn1_state Then";
+ //BA.debugLineNum = 72;BA.debugLine="Log(btn1_state)";
+__c.LogImpl("1589826",BA.ObjectToString(_btn1_state),0);
+ //BA.debugLineNum = 74;BA.debugLine="If btn1_state Then";
 if (_btn1_state) { 
- //BA.debugLineNum = 73;BA.debugLine="btn1.Color = Colors.Cyan";
+ //BA.debugLineNum = 75;BA.debugLine="btn1.Color = Colors.Cyan";
 _btn1.setColor(__c.Colors.Cyan);
- //BA.debugLineNum = 74;BA.debugLine="btn1.Text = \"ON\"";
+ //BA.debugLineNum = 76;BA.debugLine="btn1.Text = \"ON\"";
 _btn1.setText(BA.ObjectToCharSequence("ON"));
  }else {
- //BA.debugLineNum = 76;BA.debugLine="btn1.Color = 0xFF4F4F4F";
+ //BA.debugLineNum = 78;BA.debugLine="btn1.Color = 0xFF4F4F4F";
 _btn1.setColor(((int)0xff4f4f4f));
- //BA.debugLineNum = 77;BA.debugLine="btn1.Text = \"OFF\"";
+ //BA.debugLineNum = 79;BA.debugLine="btn1.Text = \"OFF\"";
 _btn1.setText(BA.ObjectToCharSequence("OFF"));
  };
- //BA.debugLineNum = 80;BA.debugLine="MyData.Put(\"Btn1_state\", btn1_state)";
+ //BA.debugLineNum = 82;BA.debugLine="MyData.Put(\"Btn1_state\", btn1_state)";
 _mydata.Put((Object)("Btn1_state"),(Object)(_btn1_state));
- //BA.debugLineNum = 81;BA.debugLine="Send_UDP_Data";
+ //BA.debugLineNum = 83;BA.debugLine="Send_UDP_Data";
 _send_udp_data();
- //BA.debugLineNum = 83;BA.debugLine="End Sub";
+ //BA.debugLineNum = 85;BA.debugLine="End Sub";
 return "";
 }
 public String  _btn2_click() throws Exception{
- //BA.debugLineNum = 85;BA.debugLine="Private Sub btn2_Click";
- //BA.debugLineNum = 86;BA.debugLine="btn2_state = Not(btn2_state)";
+ //BA.debugLineNum = 87;BA.debugLine="Private Sub btn2_Click";
+ //BA.debugLineNum = 88;BA.debugLine="btn2_state = Not(btn2_state)";
 _btn2_state = __c.Not(_btn2_state);
- //BA.debugLineNum = 87;BA.debugLine="Log(btn2_state)";
-__c.LogImpl("5917506",BA.ObjectToString(_btn2_state),0);
- //BA.debugLineNum = 89;BA.debugLine="If btn2_state Then";
+ //BA.debugLineNum = 89;BA.debugLine="Log(btn2_state)";
+__c.LogImpl("1655362",BA.ObjectToString(_btn2_state),0);
+ //BA.debugLineNum = 91;BA.debugLine="If btn2_state Then";
 if (_btn2_state) { 
- //BA.debugLineNum = 90;BA.debugLine="btn2.Color = Colors.Cyan";
+ //BA.debugLineNum = 92;BA.debugLine="btn2.Color = Colors.Cyan";
 _btn2.setColor(__c.Colors.Cyan);
- //BA.debugLineNum = 91;BA.debugLine="btn2.Text = \"ON\"";
+ //BA.debugLineNum = 93;BA.debugLine="btn2.Text = \"ON\"";
 _btn2.setText(BA.ObjectToCharSequence("ON"));
  }else {
- //BA.debugLineNum = 93;BA.debugLine="btn2.Color = 0xFF4F4F4F";
+ //BA.debugLineNum = 95;BA.debugLine="btn2.Color = 0xFF4F4F4F";
 _btn2.setColor(((int)0xff4f4f4f));
- //BA.debugLineNum = 94;BA.debugLine="btn2.Text = \"0FF\"";
+ //BA.debugLineNum = 96;BA.debugLine="btn2.Text = \"0FF\"";
 _btn2.setText(BA.ObjectToCharSequence("0FF"));
  };
- //BA.debugLineNum = 97;BA.debugLine="MyData.Put(\"Btn2_state\", btn2_state)";
+ //BA.debugLineNum = 99;BA.debugLine="MyData.Put(\"Btn2_state\", btn2_state)";
 _mydata.Put((Object)("Btn2_state"),(Object)(_btn2_state));
- //BA.debugLineNum = 98;BA.debugLine="Send_UDP_Data";
+ //BA.debugLineNum = 100;BA.debugLine="Send_UDP_Data";
 _send_udp_data();
- //BA.debugLineNum = 99;BA.debugLine="End Sub";
+ //BA.debugLineNum = 101;BA.debugLine="End Sub";
 return "";
 }
 public String  _btn3_click() throws Exception{
- //BA.debugLineNum = 101;BA.debugLine="Private Sub btn3_Click";
- //BA.debugLineNum = 102;BA.debugLine="btn3_state = Not(btn3_state)";
+ //BA.debugLineNum = 103;BA.debugLine="Private Sub btn3_Click";
+ //BA.debugLineNum = 104;BA.debugLine="btn3_state = Not(btn3_state)";
 _btn3_state = __c.Not(_btn3_state);
- //BA.debugLineNum = 103;BA.debugLine="Log(btn3_state)";
-__c.LogImpl("5983042",BA.ObjectToString(_btn3_state),0);
- //BA.debugLineNum = 105;BA.debugLine="If btn3_state Then";
+ //BA.debugLineNum = 105;BA.debugLine="Log(btn3_state)";
+__c.LogImpl("1720898",BA.ObjectToString(_btn3_state),0);
+ //BA.debugLineNum = 107;BA.debugLine="If btn3_state Then";
 if (_btn3_state) { 
- //BA.debugLineNum = 106;BA.debugLine="btn3.Color = Colors.Cyan";
+ //BA.debugLineNum = 108;BA.debugLine="btn3.Color = Colors.Cyan";
 _btn3.setColor(__c.Colors.Cyan);
- //BA.debugLineNum = 107;BA.debugLine="btn3.Text = \"ON\"";
+ //BA.debugLineNum = 109;BA.debugLine="btn3.Text = \"ON\"";
 _btn3.setText(BA.ObjectToCharSequence("ON"));
  }else {
- //BA.debugLineNum = 109;BA.debugLine="btn3.Color = 0xFF4F4F4F";
+ //BA.debugLineNum = 111;BA.debugLine="btn3.Color = 0xFF4F4F4F";
 _btn3.setColor(((int)0xff4f4f4f));
- //BA.debugLineNum = 110;BA.debugLine="btn3.Text = \"OFF\"";
+ //BA.debugLineNum = 112;BA.debugLine="btn3.Text = \"OFF\"";
 _btn3.setText(BA.ObjectToCharSequence("OFF"));
  };
- //BA.debugLineNum = 113;BA.debugLine="MyData.Put(\"Btn3_state\", btn3_state)";
+ //BA.debugLineNum = 115;BA.debugLine="MyData.Put(\"Btn3_state\", btn3_state)";
 _mydata.Put((Object)("Btn3_state"),(Object)(_btn3_state));
- //BA.debugLineNum = 114;BA.debugLine="Send_UDP_Data";
+ //BA.debugLineNum = 116;BA.debugLine="Send_UDP_Data";
 _send_udp_data();
- //BA.debugLineNum = 115;BA.debugLine="End Sub";
+ //BA.debugLineNum = 117;BA.debugLine="End Sub";
 return "";
 }
 public String  _class_globals() throws Exception{
@@ -187,10 +186,8 @@ _mydata = new anywheresoftware.b4a.objects.collections.Map();
 _mydata = __c.createMap(new Object[] {(Object)("Pos_X"),(Object)(0),(Object)("Pos_Y"),(Object)(0),(Object)("Btn1_state"),(Object)(__c.False),(Object)("Btn2_state"),(Object)(__c.False),(Object)("Btn3_state"),(Object)(__c.False)});
  //BA.debugLineNum = 25;BA.debugLine="Dim UDPSocket1 As UDPSocket";
 _udpsocket1 = new anywheresoftware.b4a.objects.SocketWrapper.UDPSocket();
- //BA.debugLineNum = 26;BA.debugLine="Dim JSONGenerator As JSONGenerator";
-_jsongenerator = new anywheresoftware.b4a.objects.collections.JSONParser.JSONGenerator();
- //BA.debugLineNum = 27;BA.debugLine="Dim Packet As UDPPacket";
-_packet = new anywheresoftware.b4a.objects.SocketWrapper.UDPSocket.UDPPacket();
+ //BA.debugLineNum = 27;BA.debugLine="Dim Packet1 As UDPPacket";
+_packet1 = new anywheresoftware.b4a.objects.SocketWrapper.UDPSocket.UDPPacket();
  //BA.debugLineNum = 28;BA.debugLine="Dim data() As Byte";
 _data = new byte[(int) (0)];
 ;
@@ -205,43 +202,74 @@ return "";
 }
 public String  _joystick_x_value_changed(double _angle,double _angledegrees,double _powr) throws Exception{
 int _pos_x = 0;
- //BA.debugLineNum = 117;BA.debugLine="Private Sub JoyStick_X_value_changed(angle As Doub";
- //BA.debugLineNum = 118;BA.debugLine="Dim Pos_X As Int = Round(CosD(angleDegrees)*-powr";
+ //BA.debugLineNum = 119;BA.debugLine="Private Sub JoyStick_X_value_changed(angle As Doub";
+ //BA.debugLineNum = 120;BA.debugLine="Dim Pos_X As Int = Round(CosD(angleDegrees)*-powr";
 _pos_x = (int) (__c.Round(__c.CosD(_angledegrees)*-_powr));
- //BA.debugLineNum = 120;BA.debugLine="Label_1.Text = \"Turn: \" & Pos_X";
-_label_1.setText(BA.ObjectToCharSequence("Turn: "+BA.NumberToString(_pos_x)));
+ //BA.debugLineNum = 121;BA.debugLine="Label_1.Text = \"TURN: \" & Pos_X";
+_label_1.setText(BA.ObjectToCharSequence("TURN: "+BA.NumberToString(_pos_x)));
  //BA.debugLineNum = 122;BA.debugLine="MyData.Put(\"Pos_X\", Pos_X)";
 _mydata.Put((Object)("Pos_X"),(Object)(_pos_x));
- //BA.debugLineNum = 124;BA.debugLine="Send_UDP_Data";
+ //BA.debugLineNum = 123;BA.debugLine="Send_UDP_Data";
 _send_udp_data();
- //BA.debugLineNum = 125;BA.debugLine="End Sub";
+ //BA.debugLineNum = 124;BA.debugLine="End Sub";
 return "";
 }
 public String  _joystick_y_value_changed(double _angle,double _angledegrees,double _powr) throws Exception{
 int _pos_y = 0;
- //BA.debugLineNum = 127;BA.debugLine="Private Sub JoyStick_Y_value_changed(angle As Doub";
- //BA.debugLineNum = 128;BA.debugLine="Dim Pos_Y As Int = Round(SinD(angleDegrees)*powr)";
+ //BA.debugLineNum = 126;BA.debugLine="Private Sub JoyStick_Y_value_changed(angle As Doub";
+ //BA.debugLineNum = 127;BA.debugLine="Dim Pos_Y As Int = Round(SinD(angleDegrees)*powr)";
 _pos_y = (int) (__c.Round(__c.SinD(_angledegrees)*_powr));
- //BA.debugLineNum = 130;BA.debugLine="Label_3.Text = \"POWER: \" & Pos_Y";
-_label_3.setText(BA.ObjectToCharSequence("POWER: "+BA.NumberToString(_pos_y)));
- //BA.debugLineNum = 132;BA.debugLine="MyData.Put(\"Pos_Y\", Pos_Y)";
+ //BA.debugLineNum = 128;BA.debugLine="Label_2.Text = \"POWER: \" & Pos_Y";
+_label_2.setText(BA.ObjectToCharSequence("POWER: "+BA.NumberToString(_pos_y)));
+ //BA.debugLineNum = 129;BA.debugLine="MyData.Put(\"Pos_Y\", Pos_Y)";
 _mydata.Put((Object)("Pos_Y"),(Object)(_pos_y));
- //BA.debugLineNum = 134;BA.debugLine="Send_UDP_Data";
+ //BA.debugLineNum = 130;BA.debugLine="Send_UDP_Data";
 _send_udp_data();
- //BA.debugLineNum = 135;BA.debugLine="End Sub";
+ //BA.debugLineNum = 131;BA.debugLine="End Sub";
 return "";
 }
 public String  _send_udp_data() throws Exception{
+anywheresoftware.b4a.objects.collections.JSONParser.JSONGenerator _jsongenerator = null;
  //BA.debugLineNum = 60;BA.debugLine="Private Sub Send_UDP_Data";
- //BA.debugLineNum = 61;BA.debugLine="JSONGenerator.Initialize(MyData)";
+ //BA.debugLineNum = 61;BA.debugLine="Dim JSONGenerator As JSONGenerator";
+_jsongenerator = new anywheresoftware.b4a.objects.collections.JSONParser.JSONGenerator();
+ //BA.debugLineNum = 63;BA.debugLine="JSONGenerator.Initialize(MyData)";
 _jsongenerator.Initialize(_mydata);
- //BA.debugLineNum = 62;BA.debugLine="data = JSONGenerator.ToString.GetBytes(\"UTF8\")";
+ //BA.debugLineNum = 64;BA.debugLine="data = JSONGenerator.ToString.GetBytes(\"UTF8\")";
 _data = _jsongenerator.ToString().getBytes("UTF8");
- //BA.debugLineNum = 64;BA.debugLine="Packet.Initialize(data, \"192.168.4.1\", 1900)";
-_packet.Initialize(_data,"192.168.4.1",(int) (1900));
- //BA.debugLineNum = 65;BA.debugLine="UDPSocket1.Send(Packet)";
-_udpsocket1.Send(_packet);
- //BA.debugLineNum = 66;BA.debugLine="End Sub";
+ //BA.debugLineNum = 66;BA.debugLine="Packet1.Initialize(data, \"192.168.1.16\", 53795)";
+_packet1.Initialize(_data,"192.168.1.16",(int) (53795));
+ //BA.debugLineNum = 67;BA.debugLine="UDPSocket1.Send(Packet1)";
+_udpsocket1.Send(_packet1);
+ //BA.debugLineNum = 68;BA.debugLine="End Sub";
+return "";
+}
+public String  _udp_packetarrived(anywheresoftware.b4a.objects.SocketWrapper.UDPSocket.UDPPacket _packet) throws Exception{
+anywheresoftware.b4a.objects.collections.JSONParser _jsonparser = null;
+anywheresoftware.b4a.objects.collections.Map _map_data = null;
+String _msg = "";
+ //BA.debugLineNum = 133;BA.debugLine="Sub UDP_PacketArrived(Packet As UDPPacket)";
+ //BA.debugLineNum = 134;BA.debugLine="Dim JSONParser As JSONParser";
+_jsonparser = new anywheresoftware.b4a.objects.collections.JSONParser();
+ //BA.debugLineNum = 135;BA.debugLine="Dim Map_Data As Map";
+_map_data = new anywheresoftware.b4a.objects.collections.Map();
+ //BA.debugLineNum = 137;BA.debugLine="Dim msg As String";
+_msg = "";
+ //BA.debugLineNum = 138;BA.debugLine="msg = BytesToString(Packet.Data, Packet.Offset, P";
+_msg = __c.BytesToString(_packet.getData(),_packet.getOffset(),_packet.getLength(),"UTF8");
+ //BA.debugLineNum = 139;BA.debugLine="JSONParser.Initialize(msg)";
+_jsonparser.Initialize(_msg);
+ //BA.debugLineNum = 140;BA.debugLine="Map_Data = JSONParser.NextObject";
+_map_data = _jsonparser.NextObject();
+ //BA.debugLineNum = 141;BA.debugLine="Try";
+try { //BA.debugLineNum = 142;BA.debugLine="Label_3.Text = \"BATTERY: \" & Map_Data.Get(\"Batte";
+_label_3.setText(BA.ObjectToCharSequence("BATTERY: "+BA.ObjectToString(_map_data.Get((Object)("Battery_level")))+"%"));
+ } 
+       catch (Exception e10) {
+			ba.setLastException(e10); //BA.debugLineNum = 144;BA.debugLine="Msgbox(\"Próba pobrania wartości 'Battery_level'";
+__c.Msgbox(BA.ObjectToCharSequence("Próba pobrania wartości 'Battery_level' nie powiodła się! Błędny parametr json"),BA.ObjectToCharSequence("ERROR"),ba);
+ };
+ //BA.debugLineNum = 146;BA.debugLine="End Sub";
 return "";
 }
 public Object callSub(String sub, Object sender, Object[] args) throws Exception {

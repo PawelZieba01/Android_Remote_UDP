@@ -29,8 +29,8 @@ Sub Class_Globals
 	
 	Dim MyData As Map = CreateMap("Pos_X":0, "Pos_Y":0, "Btn1_state":False, "Btn2_state":False, "Btn3_state":False)
 	Dim UDPSocket1 As UDPSocket
-	Dim JSONGenerator As JSONGenerator
-	Dim Packet As UDPPacket
+	
+	Dim Packet1 As UDPPacket
 	Dim data() As Byte
 	
 	
@@ -64,11 +64,13 @@ End Sub
 'You can see the list of page related events in the B4XPagesManager object. The event name is B4XPage.
 
 Private Sub Send_UDP_Data
+	Dim JSONGenerator As JSONGenerator
+	
 	JSONGenerator.Initialize(MyData)
 	data = JSONGenerator.ToString.GetBytes("UTF8")
 	'Msgbox(data, "qwerty")
-	Packet.Initialize(data, "192.168.4.1", 1900)
-	UDPSocket1.Send(Packet)
+	Packet1.Initialize(data, "192.168.1.16", 53795)
+	UDPSocket1.Send(Packet1)
 End Sub
 
 Private Sub btn1_Click
@@ -122,21 +124,29 @@ End Sub
 
 Private Sub JoyStick_X_value_changed(angle As Double, angleDegrees As Double, powr As Double)
 	Dim Pos_X As Int = Round(CosD(angleDegrees)*-powr)
-	
-	Label_1.Text = "Turn: " & Pos_X 
-	
+	Label_1.Text = "TURN: " & Pos_X 
 	MyData.Put("Pos_X", Pos_X)
-	
 	Send_UDP_Data
 End Sub
 
 Private Sub JoyStick_Y_value_changed(angle As Double, angleDegrees As Double, powr As Double)
 	Dim Pos_Y As Int = Round(SinD(angleDegrees)*powr)
-	
-	Label_3.Text = "POWER: " & Pos_Y 
-
+	Label_2.Text = "POWER: " & Pos_Y 
 	MyData.Put("Pos_Y", Pos_Y)
-	
 	Send_UDP_Data
 End Sub
 
+Sub UDP_PacketArrived(Packet As UDPPacket)
+	Dim JSONParser As JSONParser
+	Dim Map_Data As Map
+	
+	Dim msg As String
+	msg = BytesToString(Packet.Data, Packet.Offset, Packet.Length, "UTF8")
+	JSONParser.Initialize(msg)
+	Map_Data = JSONParser.NextObject
+	Try
+		Label_3.Text = "BATTERY: " & Map_Data.Get("Battery_level") & "%"
+	Catch
+		Msgbox("Próba pobrania wartości 'Battery_level' nie powiodła się! Błędny parametr json", "ERROR")
+	End Try
+End Sub
