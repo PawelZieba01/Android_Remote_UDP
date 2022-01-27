@@ -1,6 +1,9 @@
-Pilot zdalnego sterowania na Androida   ---   23.01.2022
+Pilot zdalnego sterowania UDP - Android   ---   27.01.2022
 
-Wysyła dane przez UDP do odbiornika
+Wysyła dane przez UDP do odbiornika, odbiera informacje o stanie baterii:
+- format: json
+- atrybut: "Battery_level"
+- wartość: 0-100
 
-*Projekt w wersji BiedaWersja - brak możliwości wyboru adresów, portów itd.*
 
+Możliwość ręcznej konfiguracji adresu i portów.
