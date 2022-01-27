@@ -14,25 +14,12 @@ Version=9.85
 Sub Class_Globals
 	Private Root As B4XView
 	Private xui As XUI
-	Private btn1 As Button
-	Private btn2 As Button
-	Private btn3 As Button
-	Private Label_1 As Label
-	Private Label_2 As Label
-	Private Label_3 As Label
-	Private JoyStick_X As JoyStick
-	Private JoyStick_Y As JoyStick
-	
-	Private btn1_state As Boolean = False
-	Private btn2_state As Boolean = False
-	Private btn3_state As Boolean = False
-	
-	Dim MyData As Map = CreateMap("Pos_X":0, "Pos_Y":0, "Btn1_state":False, "Btn2_state":False, "Btn3_state":False)
-	Dim UDPSocket1 As UDPSocket
-	
-	Dim Packet1 As UDPPacket
-	Dim data() As Byte
-	
+	Private p2 As B4XPilotPage
+	Private btn1_connect As Button
+	Private text1_remote_ip As EditText
+	Private text2_remote_port As EditText
+	Private text3_listen_port As EditText
+	Private Label6_msg As Label
 	
 End Sub
 
@@ -44,109 +31,31 @@ End Sub
 Private Sub B4XPage_Created (Root1 As B4XView)
 	Root = Root1
 	Root.LoadLayout("MainPage")
-	JoyStick_X.ButtonDrawable = "button"
-	JoyStick_X.PadBackground = "pad"
-	JoyStick_X.ButtonColor = Colors.Cyan
-	JoyStick_X.PadColor = Colors.Gray
 	
-	JoyStick_Y.ButtonDrawable = "button"
-	JoyStick_Y.PadBackground = "pad"
-	JoyStick_Y.ButtonColor = Colors.Cyan
-	JoyStick_Y.PadColor = Colors.Gray
 	
-	btn1.Color = 0xFF4F4F4F
-	btn2.Color = 0xFF4F4F4F
-	btn3.Color = 0xFF4F4F4F
+	p2.Initialize
+	B4XPages.AddPage("page2", p2)
 	
-	UDPSocket1.Initialize("UDP", 1901, 255)
 End Sub
 
-'You can see the list of page related events in the B4XPagesManager object. The event name is B4XPage.
-
-Private Sub Send_UDP_Data
-	Dim JSONGenerator As JSONGenerator
-	
-	JSONGenerator.Initialize(MyData)
-	data = JSONGenerator.ToString.GetBytes("UTF8")
-	'Msgbox(data, "qwerty")
-	Packet1.Initialize(data, "192.168.1.16", 53795)
-	UDPSocket1.Send(Packet1)
+Public Sub IsValidIPv4Address(IPAddress As String) As Boolean
+	Return Regex.IsMatch("^(([01]?\d\d?|2[0-4]\d|25[0-5])\.){3}([01]?\d\d?|2[0-4]\d|25[0-5])$", IPAddress)
 End Sub
 
-Private Sub btn1_Click
-	btn1_state = Not(btn1_state)
-	Log(btn1_state)
-	
-	If btn1_state Then
-		btn1.Color = Colors.Cyan
-		btn1.Text = "ON"
+Private Sub btn1_connect_Click
+	If Not(IsValidIPv4Address(text1_remote_ip.Text)) Then
+		Label6_msg.Text = "Wrong remote IP address"
+	Else If Not(text2_remote_port.Text > 0 And text2_remote_port.Text <= 65535) Then
+		Label6_msg.Text = "Wrong remote port (1 - 65535)"
+	Else If Not(text3_listen_port.Text >= 0 And text3_listen_port.Text <= 65535) Then
+		Label6_msg.Text = "Wrong listen port (0 - 65535)"
 	Else
-		btn1.Color = 0xFF4F4F4F
-		btn1.Text = "OFF"
+		Label6_msg.Text = ""
+		Main.Remote_ip = text1_remote_ip.Text
+		Main.Remote_port = text2_remote_port.Text
+		Main.Listen_port = text3_listen_port.Text
+		B4XPages.ShowPage("page2")
 	End If
 	
-	MyData.Put("Btn1_state", btn1_state)
-	Send_UDP_Data
-	
 End Sub
 
-Private Sub btn2_Click
-	btn2_state = Not(btn2_state)
-	Log(btn2_state)
-	
-	If btn2_state Then
-		btn2.Color = Colors.Cyan
-		btn2.Text = "ON"
-	Else
-		btn2.Color = 0xFF4F4F4F
-		btn2.Text = "0FF"
-	End If
-	
-	MyData.Put("Btn2_state", btn2_state)
-	Send_UDP_Data
-End Sub
-
-Private Sub btn3_Click
-	btn3_state = Not(btn3_state)
-	Log(btn3_state)
-	
-	If btn3_state Then
-		btn3.Color = Colors.Cyan
-		btn3.Text = "ON"
-	Else
-		btn3.Color = 0xFF4F4F4F
-		btn3.Text = "OFF"
-	End If
-	
-	MyData.Put("Btn3_state", btn3_state)
-	Send_UDP_Data
-End Sub
-
-Private Sub JoyStick_X_value_changed(angle As Double, angleDegrees As Double, powr As Double)
-	Dim Pos_X As Int = Round(CosD(angleDegrees)*-powr)
-	Label_1.Text = "TURN: " & Pos_X 
-	MyData.Put("Pos_X", Pos_X)
-	Send_UDP_Data
-End Sub
-
-Private Sub JoyStick_Y_value_changed(angle As Double, angleDegrees As Double, powr As Double)
-	Dim Pos_Y As Int = Round(SinD(angleDegrees)*powr)
-	Label_2.Text = "POWER: " & Pos_Y 
-	MyData.Put("Pos_Y", Pos_Y)
-	Send_UDP_Data
-End Sub
-
-Sub UDP_PacketArrived(Packet As UDPPacket)
-	Dim JSONParser As JSONParser
-	Dim Map_Data As Map
-	
-	Dim msg As String
-	msg = BytesToString(Packet.Data, Packet.Offset, Packet.Length, "UTF8")
-	JSONParser.Initialize(msg)
-	Map_Data = JSONParser.NextObject
-	Try
-		Label_3.Text = "BATTERY: " & Map_Data.Get("Battery_level") & "%"
-	Catch
-		Msgbox("Próba pobrania wartości 'Battery_level' nie powiodła się! Błędny parametr json", "ERROR")
-	End Try
-End Sub

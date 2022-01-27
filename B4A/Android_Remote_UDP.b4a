@@ -1,6 +1,8 @@
 ﻿Build1=Default,b4a.example
 File1=MainPage.bal
+File2=PilotPage.bal
 FileGroup1=Default Group
+FileGroup2=Default Group
 Group=Default Group
 Library1=assectionedslider
 Library2=b4xpages
@@ -10,10 +12,11 @@ Library5=json
 Library6=network
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="29"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
 Module1=|relative|..\B4XMainPage
-Module2=Starter
-NumberOfFiles=1
+Module2=B4XPilotPage
+Module3=Starter
+NumberOfFiles=2
 NumberOfLibraries=6
-NumberOfModules=2
+NumberOfModules=3
 Version=11.2
 @EndOfDesignText@
 #Region  Project Attributes 
@@ -34,10 +37,15 @@ Version=11.2
 
 Sub Process_Globals
 	Public ActionBarHomeClicked As Boolean
+	
+	Public Remote_ip As String = "192.168.4.1"
+	Public Remote_port As Int = 1900
+	Public Listen_port As Int = 0
+	
 End Sub
 
 Sub Globals
-
+	
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -85,3 +93,4 @@ public boolean _onCreateOptionsMenu(android.view.Menu menu) {
 #End Region
 
 'Program code should go into B4XMainPage and other pages.
+

@@ -337,6 +337,9 @@ public class main extends Activity implements B4AActivity{
 
 public anywheresoftware.b4a.keywords.Common __c = null;
 public static boolean _actionbarhomeclicked = false;
+public static String _remote_ip = "";
+public static int _remote_port = 0;
+public static int _listen_port = 0;
 public b4a.example.starter _starter = null;
 public b4a.example.b4xpages _b4xpages = null;
 public b4a.example.b4xcollections _b4xcollections = null;
@@ -346,64 +349,64 @@ public static boolean isAnyActivityVisible() {
 vis = vis | (main.mostCurrent != null);
 return vis;}
 public static String  _activity_actionbarhomeclick() throws Exception{
- //BA.debugLineNum = 33;BA.debugLine="Sub Activity_ActionBarHomeClick";
- //BA.debugLineNum = 34;BA.debugLine="ActionBarHomeClicked = True";
+ //BA.debugLineNum = 38;BA.debugLine="Sub Activity_ActionBarHomeClick";
+ //BA.debugLineNum = 39;BA.debugLine="ActionBarHomeClicked = True";
 _actionbarhomeclicked = anywheresoftware.b4a.keywords.Common.True;
- //BA.debugLineNum = 35;BA.debugLine="B4XPages.Delegate.Activity_ActionBarHomeClick";
+ //BA.debugLineNum = 40;BA.debugLine="B4XPages.Delegate.Activity_ActionBarHomeClick";
 mostCurrent._b4xpages._delegate /*b4a.example.b4xpagesdelegator*/ ._activity_actionbarhomeclick /*String*/ ();
- //BA.debugLineNum = 36;BA.debugLine="ActionBarHomeClicked = False";
+ //BA.debugLineNum = 41;BA.debugLine="ActionBarHomeClicked = False";
 _actionbarhomeclicked = anywheresoftware.b4a.keywords.Common.False;
- //BA.debugLineNum = 37;BA.debugLine="End Sub";
+ //BA.debugLineNum = 42;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_create(boolean _firsttime) throws Exception{
 b4a.example.b4xpagesmanager _pm = null;
- //BA.debugLineNum = 25;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 26;BA.debugLine="Dim pm As B4XPagesManager";
+ //BA.debugLineNum = 30;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+ //BA.debugLineNum = 31;BA.debugLine="Dim pm As B4XPagesManager";
 _pm = new b4a.example.b4xpagesmanager();
- //BA.debugLineNum = 27;BA.debugLine="pm.Initialize(Activity)";
+ //BA.debugLineNum = 32;BA.debugLine="pm.Initialize(Activity)";
 _pm._initialize /*String*/ (mostCurrent.activityBA,mostCurrent._activity);
- //BA.debugLineNum = 28;BA.debugLine="End Sub";
+ //BA.debugLineNum = 33;BA.debugLine="End Sub";
 return "";
 }
 public static boolean  _activity_keypress(int _keycode) throws Exception{
- //BA.debugLineNum = 39;BA.debugLine="Sub Activity_KeyPress (KeyCode As Int) As Boolean";
- //BA.debugLineNum = 40;BA.debugLine="Return B4XPages.Delegate.Activity_KeyPress(KeyCod";
+ //BA.debugLineNum = 44;BA.debugLine="Sub Activity_KeyPress (KeyCode As Int) As Boolean";
+ //BA.debugLineNum = 45;BA.debugLine="Return B4XPages.Delegate.Activity_KeyPress(KeyCod";
 if (true) return mostCurrent._b4xpages._delegate /*b4a.example.b4xpagesdelegator*/ ._activity_keypress /*boolean*/ (_keycode);
- //BA.debugLineNum = 41;BA.debugLine="End Sub";
+ //BA.debugLineNum = 46;BA.debugLine="End Sub";
 return false;
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 47;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 48;BA.debugLine="B4XPages.Delegate.Activity_Pause";
+ //BA.debugLineNum = 52;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 53;BA.debugLine="B4XPages.Delegate.Activity_Pause";
 mostCurrent._b4xpages._delegate /*b4a.example.b4xpagesdelegator*/ ._activity_pause /*String*/ ();
- //BA.debugLineNum = 49;BA.debugLine="End Sub";
+ //BA.debugLineNum = 54;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_permissionresult(String _permission,boolean _result) throws Exception{
- //BA.debugLineNum = 51;BA.debugLine="Sub Activity_PermissionResult (Permission As Strin";
- //BA.debugLineNum = 52;BA.debugLine="B4XPages.Delegate.Activity_PermissionResult(Permi";
+ //BA.debugLineNum = 56;BA.debugLine="Sub Activity_PermissionResult (Permission As Strin";
+ //BA.debugLineNum = 57;BA.debugLine="B4XPages.Delegate.Activity_PermissionResult(Permi";
 mostCurrent._b4xpages._delegate /*b4a.example.b4xpagesdelegator*/ ._activity_permissionresult /*String*/ (_permission,_result);
- //BA.debugLineNum = 53;BA.debugLine="End Sub";
+ //BA.debugLineNum = 58;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 43;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 44;BA.debugLine="B4XPages.Delegate.Activity_Resume";
+ //BA.debugLineNum = 48;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 49;BA.debugLine="B4XPages.Delegate.Activity_Resume";
 mostCurrent._b4xpages._delegate /*b4a.example.b4xpagesdelegator*/ ._activity_resume /*String*/ ();
- //BA.debugLineNum = 45;BA.debugLine="End Sub";
+ //BA.debugLineNum = 50;BA.debugLine="End Sub";
 return "";
 }
 public static String  _create_menu(Object _menu) throws Exception{
- //BA.debugLineNum = 55;BA.debugLine="Sub Create_Menu (Menu As Object)";
- //BA.debugLineNum = 56;BA.debugLine="B4XPages.Delegate.Create_Menu(Menu)";
+ //BA.debugLineNum = 60;BA.debugLine="Sub Create_Menu (Menu As Object)";
+ //BA.debugLineNum = 61;BA.debugLine="B4XPages.Delegate.Create_Menu(Menu)";
 mostCurrent._b4xpages._delegate /*b4a.example.b4xpagesdelegator*/ ._create_menu /*String*/ (_menu);
- //BA.debugLineNum = 57;BA.debugLine="End Sub";
+ //BA.debugLineNum = 62;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{
- //BA.debugLineNum = 21;BA.debugLine="Sub Globals";
- //BA.debugLineNum = 23;BA.debugLine="End Sub";
+ //BA.debugLineNum = 26;BA.debugLine="Sub Globals";
+ //BA.debugLineNum = 28;BA.debugLine="End Sub";
 return "";
 }
 
@@ -425,7 +428,13 @@ b4xcollections._process_globals();
  //BA.debugLineNum = 17;BA.debugLine="Sub Process_Globals";
  //BA.debugLineNum = 18;BA.debugLine="Public ActionBarHomeClicked As Boolean";
 _actionbarhomeclicked = false;
- //BA.debugLineNum = 19;BA.debugLine="End Sub";
+ //BA.debugLineNum = 20;BA.debugLine="Public Remote_ip As String = \"192.168.4.1\"";
+_remote_ip = "192.168.4.1";
+ //BA.debugLineNum = 21;BA.debugLine="Public Remote_port As Int = 1900";
+_remote_port = (int) (1900);
+ //BA.debugLineNum = 22;BA.debugLine="Public Listen_port As Int = 0";
+_listen_port = (int) (0);
+ //BA.debugLineNum = 24;BA.debugLine="End Sub";
 return "";
 }
 public boolean _onCreateOptionsMenu(android.view.Menu menu) {
