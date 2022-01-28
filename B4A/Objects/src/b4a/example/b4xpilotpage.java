@@ -87,7 +87,7 @@ public String  _btn1_click() throws Exception{
  //BA.debugLineNum = 76;BA.debugLine="btn1_state = Not(btn1_state)";
 _btn1_state = __c.Not(_btn1_state);
  //BA.debugLineNum = 77;BA.debugLine="Log(btn1_state)";
-__c.LogImpl("611599874",BA.ObjectToString(_btn1_state),0);
+__c.LogImpl("510878978",BA.ObjectToString(_btn1_state),0);
  //BA.debugLineNum = 79;BA.debugLine="If btn1_state Then";
 if (_btn1_state) { 
  //BA.debugLineNum = 80;BA.debugLine="btn1.Color = Colors.Cyan";
@@ -112,7 +112,7 @@ public String  _btn2_click() throws Exception{
  //BA.debugLineNum = 93;BA.debugLine="btn2_state = Not(btn2_state)";
 _btn2_state = __c.Not(_btn2_state);
  //BA.debugLineNum = 94;BA.debugLine="Log(btn2_state)";
-__c.LogImpl("611665410",BA.ObjectToString(_btn2_state),0);
+__c.LogImpl("510944514",BA.ObjectToString(_btn2_state),0);
  //BA.debugLineNum = 96;BA.debugLine="If btn2_state Then";
 if (_btn2_state) { 
  //BA.debugLineNum = 97;BA.debugLine="btn2.Color = Colors.Cyan";
@@ -137,7 +137,7 @@ public String  _btn3_click() throws Exception{
  //BA.debugLineNum = 109;BA.debugLine="btn3_state = Not(btn3_state)";
 _btn3_state = __c.Not(_btn3_state);
  //BA.debugLineNum = 110;BA.debugLine="Log(btn3_state)";
-__c.LogImpl("611730946",BA.ObjectToString(_btn3_state),0);
+__c.LogImpl("511010050",BA.ObjectToString(_btn3_state),0);
  //BA.debugLineNum = 112;BA.debugLine="If btn3_state Then";
 if (_btn3_state) { 
  //BA.debugLineNum = 113;BA.debugLine="btn3.Color = Colors.Cyan";

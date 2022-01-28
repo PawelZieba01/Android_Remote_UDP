@@ -10,6 +10,6 @@ ModuleClosedNodes0=
 ModuleClosedNodes1=
 ModuleClosedNodes2=
 ModuleClosedNodes3=
-NavigationStack=Main,Activity_Create,30,0,Main,Process_Globals,20,6,B4XPilotPage,B4XPage_Created,49,6,B4XPilotPage,Class_Globals,20,0,B4XPilotPage,B4XPage_Appear,57,6,B4XPilotPage,Send_UDP_Data,72,6,B4XPilotPage,btn2_Click,103,0,B4XPilotPage,btn3_Click,111,0,B4XMainPage,btn1_connect_Click,51,6,B4XPilotPage,JoyStick_Y_value_changed,138,2
+NavigationStack=B4XPilotPage,B4XPage_Created,49,6,B4XPilotPage,Class_Globals,20,0,B4XPilotPage,B4XPage_Appear,57,6,B4XPilotPage,Send_UDP_Data,72,6,B4XPilotPage,btn2_Click,103,0,B4XPilotPage,btn3_Click,111,0,B4XMainPage,btn1_connect_Click,51,6,Wizualny projektant,MainPage.bal,-100,1,Wizualny projektant,PilotPage.bal,-100,1,B4XPilotPage,JoyStick_Y_value_changed,138,2
 SelectedBuild=0
 VisibleModules=1,2,3

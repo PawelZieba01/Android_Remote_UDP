@@ -19,7 +19,7 @@ views.get("btn4_back").vw.setLeft((int)((100d / 100 * width)-(views.get("btn4_ba
 views.get("joystick_x").vw.setLeft((int)((0d / 100 * width)));
 views.get("joystick_y").vw.setLeft((int)((100d / 100 * width)-(views.get("joystick_x").vw.getWidth())));
 views.get("joystick_x").vw.setTop((int)((100d / 100 * height)-(views.get("joystick_x").vw.getHeight())));
-views.get("joystick_y").vw.setTop((int)((views.get("joystick_y").vw.getTop())));
+views.get("joystick_y").vw.setTop((int)((views.get("joystick_x").vw.getTop())));
 views.get("btn1").vw.setLeft((int)((50d / 100 * width)-(views.get("btn1").vw.getWidth())/2d));
 views.get("btn2").vw.setLeft((int)((views.get("btn1").vw.getLeft())));
 views.get("btn3").vw.setLeft((int)((views.get("btn2").vw.getLeft())));
